@@ -1,23 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace NewTalentsDioBootcamp
 {
     public class Calculator
     {
-        private readonly LimitedStack<string> historic = new LimitedStack<string>(3);
+        private readonly LimitedStack<string> _historic = new LimitedStack<string>(3);
+        private string _date;
+
+        public Calculator(string date)
+        {
+            _date = date;
+        }
 
         public int Sum(int val1, int val2)
         {
             var res = val1 + val2;
-            historic.Push("Val: " + res);
+            _historic.Push("Val: " + res);
             return res;
         }
 
         public int Subtract(int val1, int val2)
         {
             var res = val1 - val2;
-            historic.Push("Val " + res);
+            _historic.Push("Val " + res);
 
             return res;
         }
@@ -25,7 +30,7 @@ namespace NewTalentsDioBootcamp
         public int Multiply(int val1, int val2)
         {
             var res = val1 * val2;
-            historic.Push("Val " + res);
+            _historic.Push("Val " + res);
             return res;
         }
 
@@ -34,13 +39,18 @@ namespace NewTalentsDioBootcamp
             if (val2 == 0) throw new DivideByZeroException();
 
             var res = val1 / val2;
-            historic.Push("Val " + res);
+            _historic.Push("Val " + res);
             return res;
         }
 
         public LimitedStack<string> Historic()
         {
-            return historic;
+            return _historic;
         }
-}
+
+        public string GetDate()
+        {
+            return _date;
+        }
+    }
 }
