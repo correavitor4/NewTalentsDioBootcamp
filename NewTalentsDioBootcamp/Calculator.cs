@@ -11,7 +11,7 @@ namespace NewTalentsDioBootcamp
 
         public int Subtract(int val1, int val2)
         {
-            return 0;
+            return val1 - val2;
         }
 
         public int Multiply(int val1, int val2)
@@ -22,7 +22,8 @@ namespace NewTalentsDioBootcamp
         public int Divide(int val1, int val2)
         {
             if (val2 == 0) throw new DivideByZeroException();
-            return 0;
+
+            return val1 / val2;
         }
 }
 }
