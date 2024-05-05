@@ -1,10 +1,11 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 using NewTalentsDioBootcamp;
 using Xunit;
 
 namespace TestNewTalentsDioBootcamp
 {
-    public class UnitTest1
+    public class TestCalculator
     {
         [Theory]
         [InlineData(1, 2, 3)]
@@ -60,10 +61,24 @@ namespace TestNewTalentsDioBootcamp
         {
             var calc = new Calculator();
 
-            Assert.Throws<DivideByZeroException>(() =>
-            {
-                calc.Divide(3, 0);
-            });
+            Assert.Throws<DivideByZeroException>(() => { calc.Divide(3, 0); });
+        }
+
+
+        [Fact]
+        public void TestHistoric()
+        {
+            var calc = new Calculator();
+
+            calc.Sum(1, 2);
+            calc.Subtract(1, 2);
+            calc.Multiply(1, 2);
+            calc.Divide(1, 2);
+
+            var res = calc.Historic();
+
+            Assert.NotEmpty(res);
+            Assert.Equal(3, res.Count);
         }
     }
 }
