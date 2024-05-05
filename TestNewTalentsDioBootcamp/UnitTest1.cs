@@ -1,3 +1,4 @@
+using NewTalentsDioBootcamp;
 using System;
 using Xunit;
 
@@ -8,7 +9,7 @@ namespace TestNewTalentsDioBootcamp
         [Fact]
         public void Test1()
         {
-
+            var calc = new Calculator();
         }
     }
 }
